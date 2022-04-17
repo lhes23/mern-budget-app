@@ -11,20 +11,22 @@ const LoginForm = () => {
     <Form onSubmit={loginFormHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Stack direction="horizontal" gap={3}>
-          <Form.Label>Username</Form.Label>
+          <Form.Label>Username: </Form.Label>
           <Form.Control type="text" placeholder="Enter Username" />
         </Stack>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Stack direction="horizontal" gap={3}>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Password: </Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Stack>
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div className="d-grid gap">
+        <Button variant="primary" type="submit" size="lg">
+          Submit
+        </Button>
+      </div>
     </Form>
   );
 };
