@@ -1,9 +1,0 @@
-body {
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(240, 171, 156, 0.5),
-    rgba(98, 139, 245, 0.9)
-  );
-  background-repeat: no-repeat;
-  height: 100vh;
-}
