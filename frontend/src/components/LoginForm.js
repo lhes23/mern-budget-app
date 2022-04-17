@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import { Form, Button, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { login } from "../features/UserSlice";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const loginFormHandler = (e) => {
     e.preventDefault();
     dispatch(login({ username, password }));
+    navigate("/dashboard");
   };
 
   return (
