@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Stack } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const LoginForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const loginFormHandler = (e) => {
     e.preventDefault();
-    console.log("Form Submitted");
+    console.log("Form Submitted: ", username, password);
   };
   return (
     <Form onSubmit={loginFormHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Stack direction="horizontal" gap={3}>
           <Form.Label>Username: </Form.Label>
-          <Form.Control type="text" placeholder="Enter Username" />
+          <Form.Control
+            type="text"
+            placeholder="Enter Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </Stack>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Stack direction="horizontal" gap={3}>
           <Form.Label>Password: </Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Stack>
       </Form.Group>
       <div className="d-grid gap">
