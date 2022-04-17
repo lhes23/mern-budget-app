@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Form, Button, Stack } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { login } from "../features/UserSlice";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+
   const loginFormHandler = (e) => {
     e.preventDefault();
-    console.log("Form Submitted: ", username, password);
+    dispatch(login({ username, password }));
   };
+
   return (
     <Form onSubmit={loginFormHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
