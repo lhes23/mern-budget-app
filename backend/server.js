@@ -5,4 +5,8 @@ const dotenv = require("dotenv").config();
 app.use("/users", require("./routes/userRoutes"));
 
 port = process.env.PORT || 3001;
+app.get("/", (req, res) => {
+  res.send(`Backend Server Running on port ${port}`);
+});
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
