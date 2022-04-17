@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const loginFormHandler = (e) => {
     e.preventDefault();
-    dispatch(login({ username, password }));
+    dispatch(login({ username, password, loggedIn: true }));
     navigate("/dashboard");
   };
 
