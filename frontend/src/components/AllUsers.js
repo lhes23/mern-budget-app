@@ -10,7 +10,7 @@ const AllUsers = () => {
         const response = await axios.get("/users");
         setUsers(response.data);
       } catch (error) {
-        return <p>{error}</p>;
+        console.log(error);
       }
     };
     fetchData();
