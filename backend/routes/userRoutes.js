@@ -9,7 +9,10 @@ const dummy_data = [
 router
   .route("/")
   .get((req, res) => res.json(dummy_data))
-  .post((req, res) => console.log(req.body));
+  .post((req, res) => {
+    console.log(req.body);
+    res.json({ status: "ok" });
+  });
 
 router
   .route("/:id")
