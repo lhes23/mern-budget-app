@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/userModels");
 
 const dummy_data = [
   { name: "lester", age: 36 },
@@ -9,9 +10,15 @@ const dummy_data = [
 router
   .route("/")
   .get((req, res) => res.json(dummy_data))
-  .post((req, res) => {
-    console.log(req.body);
-    res.json({ status: "ok" });
+  .post(async (req, res) => {
+    const { email, username, password } = req.body;
+    try {
+      await User.create({ email, username, password });
+      console.log({ email, username, password });
+      res.json({ status: "ok" });
+    } catch (error) {
+      console.log(error);
+    }
   });
 
 router

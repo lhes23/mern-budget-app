@@ -4,5 +4,5 @@ const URI = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PWD
 
 mongoose
   .connect(URI)
-  .then(() => console.log("Database Connected!"))
+  .then(() => console.log("Database Connected!:", process.env.MONGO_DATABASE))
   .catch((err) => console.log(err));
