@@ -30,7 +30,9 @@ const Dashboard = () => {
     content = (
       <>
         <p>You are not allowed!</p>
-        <Link to="/">Login</Link>
+        <Link to="/" className="btn btn-primary">
+          Login
+        </Link>
       </>
     );
   }
