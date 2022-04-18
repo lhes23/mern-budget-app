@@ -12,6 +12,7 @@ const RegisterForm = () => {
 
   const registerFormHandler = async (e) => {
     e.preventDefault();
+    console.log({ email, username, password });
     try {
       await axios.post("/users", { email, username, password });
     } catch (error) {
