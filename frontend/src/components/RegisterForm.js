@@ -1,54 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Form, Button, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import FormButton from "./FormButton";
+import FormInputSingle from "./FormInputSingle";
 
 const RegisterForm = () => {
-  const registerFormHandler = () => {};
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const registerFormHandler = async (e) => {
+    e.preventDefault();
+    console.log(email, username, password);
+
+    try {
+      await axios.post("/users", { email, username, password });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Form onSubmit={registerFormHandler}>
-      {/* Email Address Input */}
-      <Form.Group className="mb-3">
-        <Stack direction="horizontal" gap={2}>
-          <Form.Label>Email Address: </Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Email"
-            required
-          ></Form.Control>
-        </Stack>
-      </Form.Group>
+      {/* Email Input */}
+      <FormInputSingle name="Email Address" type="email" func={setEmail} />
 
       {/* Username Input */}
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Stack direction="horizontal" gap={3}>
-          <Form.Label>Username: </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Username"
-            // onChange={}
-            required
-          />
-        </Stack>
-      </Form.Group>
+      <FormInputSingle name="Username" type="text" func={setUsername} />
 
       {/* Password Input */}
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Stack direction="horizontal" gap={3}>
-          <Form.Label>Password: </Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            // onChange={}
-            required
-          />
-        </Stack>
-      </Form.Group>
+      <FormInputSingle name="Password" type="password" func={setPassword} />
 
-      <div className="d-grid gap">
-        <Button variant="primary" type="submit" size="lg">
-          Register
-        </Button>
-      </div>
+      <FormButton value="Register" />
+
       <p>
         Already have an account? <Link to="/">Login Here</Link>
       </p>

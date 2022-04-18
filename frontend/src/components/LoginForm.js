@@ -3,6 +3,8 @@ import { Form, Button, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { login } from "../features/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
+import FormInputSingle from "./FormInputSingle";
+import FormButton from "./FormButton";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -19,34 +21,13 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={loginFormHandler}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Stack direction="horizontal" gap={3}>
-          <Form.Label>Username: </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Username"
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </Stack>
-      </Form.Group>
+      {/* Username Input */}
+      <FormInputSingle name="Username" type="text" func={setUsername} />
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Stack direction="horizontal" gap={3}>
-          <Form.Label>Password: </Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </Stack>
-      </Form.Group>
-      <div className="d-grid gap">
-        <Button variant="primary" type="submit" size="lg">
-          Submit
-        </Button>
-      </div>
+      {/* Password Input */}
+      <FormInputSingle name="Password" type="text" func={setPassword} />
+
+      <FormButton value="Login" />
       <p>
         No Account Yet? <Link to="/register">Register Here</Link>
       </p>
