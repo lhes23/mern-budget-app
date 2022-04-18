@@ -11,4 +11,17 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = createUser;
+const findUser = async (req, res) => {
+  res.send("Get info for user: " + req.params.id);
+};
+
+const dummy_data = [
+  { name: "lester", age: 36 },
+  { name: "harry", age: 30 },
+];
+
+const getAllUsers = async (req, res) => {
+  res.json(dummy_data);
+};
+
+module.exports = { createUser, getAllUsers, findUser };
