@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getAllUsers } from "../api/usersApi";
+import axios from "axios";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setUsers(await getAllUsers());
+      try {
+        const response = await axios.get("/users");
+        setUsers(response.data);
+      } catch (error) {
+        return <p>{error}</p>;
+      }
     };
     fetchData();
   }, []);
