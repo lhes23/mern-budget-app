@@ -16,10 +16,12 @@ const findUser = async (req, res) => {
 };
 
 const getAllUsers = async (req, res) => {
-  User.find({}, (err, users) => {
-    console.log(users);
-    res.send(users);
-  });
+  //   User.find({}, (err, users) => {
+  //     console.log(users);
+  //     res.send(users);
+  //   });
+  const users = await User.find();
+  res.send(users);
 };
 
 const updateUser = async (req, res) => {
