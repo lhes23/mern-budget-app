@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormButton from "./FormButton";
 import FormInputSingle from "./FormInputSingle";
 
@@ -10,11 +10,14 @@ const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const nav = useNavigate();
+
   const registerFormHandler = async (e) => {
     e.preventDefault();
     console.log({ email, username, password });
     try {
       await axios.post("/users", { email, username, password });
+      nav("/");
     } catch (error) {
       console.log(error);
     }
