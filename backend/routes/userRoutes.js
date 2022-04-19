@@ -4,18 +4,11 @@ const {
   createUser,
   getAllUsers,
   findUser,
+  updateUser,
+  deleteUser,
 } = require("../controllers/userControllers");
 
 router.route("/").get(getAllUsers).post(createUser);
-
-router
-  .route("/:id")
-  .get(findUser)
-  .put((req, res) => {
-    res.send(`update user with id: ${req.params.id}`);
-  })
-  .delete((req, res) => {
-    res.send(`delete user with id: ${req.params.id}`);
-  });
+router.route("/:id").get(findUser).put(updateUser).delete(deleteUser);
 
 module.exports = router;

@@ -24,4 +24,14 @@ const getAllUsers = async (req, res) => {
   res.json(dummy_data);
 };
 
-module.exports = { createUser, getAllUsers, findUser };
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  res.send("Update user with the id: " + id);
+};
+
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  res.send("Delete user with the id: " + id);
+};
+
+module.exports = { createUser, getAllUsers, findUser, updateUser, deleteUser };
