@@ -12,7 +12,17 @@ const createUser = async (req, res) => {
 };
 
 const findUser = async (req, res) => {
-  res.send("Get info for user: " + req.params.id);
+  const { username, password } = req.body;
+  const user = await User.findOne({ username, password });
+
+  console.log(user);
+  if (user) {
+    return res.json({ status: "ok", user: true });
+  } else {
+    return res.send(user).json({ status: "error", user: false });
+  }
+
+  //   res.send(user);
 };
 
 const getAllUsers = async (req, res) => {

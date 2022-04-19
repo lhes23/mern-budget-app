@@ -3,12 +3,15 @@ import axios from "axios";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/users");
+        setIsLoading(true);
         setUsers(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -20,13 +23,17 @@ const AllUsers = () => {
     <div>
       <h2>All Users</h2>
       <ul>
-        {users.map((user) => {
-          return (
-            <li key={user._id}>
-              {user._id} - {user.email} - {user.username}
-            </li>
-          );
-        })}
+        {isLoading ? (
+          <p>Loading..</p>
+        ) : (
+          users.map((user) => {
+            return (
+              <li key={user._id}>
+                {user._id} - {user.email} - {user.username} - {user.password}
+              </li>
+            );
+          })
+        )}
       </ul>
     </div>
   );

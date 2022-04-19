@@ -5,6 +5,7 @@ import { login } from "../features/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import FormInputSingle from "./FormInputSingle";
 import FormButton from "./FormButton";
+import axios from "axios";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -13,9 +14,14 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const loginFormHandler = (e) => {
+  const loginFormHandler = async (e) => {
     e.preventDefault();
-    dispatch(login({ username, password, loggedIn: true }));
+
+    console.log(username, password);
+
+    const { data } = await axios.post("/users/login", { username, password });
+    console.log(data);
+    dispatch(login(data));
     navigate("/dashboard");
   };
 
