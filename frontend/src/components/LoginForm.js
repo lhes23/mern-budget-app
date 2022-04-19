@@ -25,7 +25,7 @@ const LoginForm = () => {
       <FormInputSingle name="Username" type="text" func={setUsername} />
 
       {/* Password Input */}
-      <FormInputSingle name="Password" type="text" func={setPassword} />
+      <FormInputSingle name="Password" type="password" func={setPassword} />
 
       <FormButton value="Login" />
       <p>
