@@ -22,8 +22,8 @@ const AllUsers = () => {
       <ul>
         {users.map((user) => {
           return (
-            <li key={user.name}>
-              {user.name} - {user.age}
+            <li key={user._id}>
+              {user._id} - {user.email} - {user.username}
             </li>
           );
         })}

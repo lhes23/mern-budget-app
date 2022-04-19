@@ -15,13 +15,11 @@ const findUser = async (req, res) => {
   res.send("Get info for user: " + req.params.id);
 };
 
-const dummy_data = [
-  { name: "lester", age: 36 },
-  { name: "harry", age: 30 },
-];
-
 const getAllUsers = async (req, res) => {
-  res.json(dummy_data);
+  User.find({}, (err, users) => {
+    console.log(users);
+    res.send(users);
+  });
 };
 
 const updateUser = async (req, res) => {
