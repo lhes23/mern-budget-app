@@ -9,7 +9,7 @@ const UserDetails = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(`/users/${id}`);
+      const { data } = await axios.get(`api/users/${id}`);
       setUserDetails(data[0]);
     };
     fetchData();

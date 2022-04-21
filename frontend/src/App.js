@@ -3,7 +3,6 @@ import Login from "./pages/Login";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
-import UserDetailsPage from "./pages/UserDetailsPage";
 
 const App = () => {
   return (

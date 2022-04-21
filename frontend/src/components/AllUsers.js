@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Routes, Route, Link } from "react-router-dom";
-import UserDetails from "./UserDetails";
+import { Link } from "react-router-dom";
+import { getAllUsers } from "../api";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getAllUserApi = async () => {
       try {
-        const response = await axios.get("/users");
+        setIsLoading(true);
+        const data = await getAllUsers();
+        setUsers(data);
         setIsLoading(false);
-        setUsers(response.data);
       } catch (error) {
-        console.log(error);
+        console.log("My Error:", error);
       }
     };
-    fetchData();
-    console.log(isLoading);
+
+    getAllUserApi();
   }, []);
 
   return (
     <div>
       <h2>All Users</h2>
-      <Routes>
-        <Route path="/users/:id" element={<UserDetails />} />
-      </Routes>
       <ul>
         {isLoading ? (
           <p>Loading..</p>

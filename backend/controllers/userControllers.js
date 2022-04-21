@@ -18,7 +18,8 @@ const findUser = async (req, res) => {
   if (user) {
     return res.json({ status: "ok", user });
   } else {
-    return res.json({ status: "error", user: null });
+    res.json({ status: "error", user: null });
+    throw new Error("No User Found");
   }
 };
 
