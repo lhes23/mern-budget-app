@@ -23,10 +23,6 @@ const findUser = async (req, res) => {
 };
 
 const getAllUsers = async (req, res) => {
-  //   User.find({}, (err, users) => {
-  //     console.log(users);
-  //     res.send(users);
-  //   });
   const users = await User.find();
   res.send(users);
 };
@@ -44,10 +40,8 @@ const deleteUser = async (req, res) => {
 const userDetails = async (req, res) => {
   User.find({ _id: req.params.id }).exec((err, userDetails) => {
     if (err) return handleError(err);
-    console.log(userDetails);
     res.send(userDetails);
   });
-  // res.send(userDetails);
 };
 
 module.exports = {
