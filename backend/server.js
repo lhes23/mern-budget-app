@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv").config();
+
 const cors = require("cors");
+require("dotenv").config();
 require("./db");
 
 app.use(cors());
@@ -9,7 +10,7 @@ app.use(express.json());
 
 app.use("/users", require("./routes/userRoutes"));
 
-port = process.env.PORT || 3001;
+const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
   res.send(`Backend Server Running on port ${port}`);

@@ -13,14 +13,19 @@ const createUser = async (req, res) => {
 
 const findUser = async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({ username, password });
+  const user = await User.findOne({ username, password }, (err, user) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(user);
+    }
+  });
 
-  console.log(user);
-  if (user) {
-    return res.json({ status: "ok", user: true });
-  } else {
-    return res.send(user).json({ status: "error", user: false });
-  }
+  // if (user) {
+  //   return res.json({ status: "ok", user: true }).send(user);
+  // } else {
+  //   return res.json({ status: "error", user: false });
+  // }
 
   //   res.send(user);
 };
@@ -44,4 +49,20 @@ const deleteUser = async (req, res) => {
   res.send("Delete user with the id: " + id);
 };
 
-module.exports = { createUser, getAllUsers, findUser, updateUser, deleteUser };
+const userDetails = async (req, res) => {
+  User.find({ _id: req.params.id }).exec((err, userDetails) => {
+    if (err) return handleError(err);
+    console.log(userDetails);
+    res.send(userDetails);
+  });
+  // res.send(userDetails);
+};
+
+module.exports = {
+  createUser,
+  getAllUsers,
+  findUser,
+  updateUser,
+  deleteUser,
+  userDetails,
+};
