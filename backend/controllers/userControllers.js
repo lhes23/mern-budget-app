@@ -13,21 +13,13 @@ const createUser = async (req, res) => {
 
 const findUser = async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({ username, password }, (err, user) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(user);
-    }
-  });
+  const user = await User.findOne({ username, password });
 
-  // if (user) {
-  //   return res.json({ status: "ok", user: true }).send(user);
-  // } else {
-  //   return res.json({ status: "error", user: false });
-  // }
-
-  //   res.send(user);
+  if (user) {
+    return res.json({ status: "ok", user: user });
+  } else {
+    return res.json({ status: "error", user: false });
+  }
 };
 
 const getAllUsers = async (req, res) => {
