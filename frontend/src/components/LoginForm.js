@@ -5,12 +5,13 @@ import { login } from "../features/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import FormInputSingle from "./FormInputSingle";
 import FormButton from "./FormButton";
-import axios from "axios";
 import { loginUser } from "../api";
+import AlertError from "./AlertError";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const LoginForm = () => {
       const data = await loginUser({ username, password });
       console.log(data);
       if (data.status !== "ok") {
-        console.log("No User Found!");
+        setError("No User Found!");
         return;
       }
       dispatch(login(data.user));
@@ -34,6 +35,14 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={loginFormHandler}>
+      {error && (
+        <AlertError
+          errorMsg={error}
+          onClose={() => {
+            setError(null);
+          }}
+        />
+      )}
       {/* Username Input */}
       <FormInputSingle name="Username" type="text" func={setUsername} />
 
