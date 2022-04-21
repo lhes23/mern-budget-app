@@ -16,15 +16,14 @@ const UserDetails = () => {
   }, [id]);
 
   return (
-    <div>
-      <h1>User Details</h1>
+    <ul>
       {userDetails && (
         <>
-          <h1>{userDetails.username}</h1>
-          <h2>{userDetails.email}</h2>
+          <li>USERNAME: {userDetails.username}</li>
+          <li>EMAIL: {userDetails.email}</li>
         </>
       )}
-    </div>
+    </ul>
   );
 };
 
