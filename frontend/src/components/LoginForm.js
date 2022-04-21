@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FormInputSingle from "./FormInputSingle";
 import FormButton from "./FormButton";
 import axios from "axios";
+import { loginUser } from "../api";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -17,15 +18,18 @@ const LoginForm = () => {
   const loginFormHandler = async (e) => {
     e.preventDefault();
 
-    const { data } = await axios.post("/users/login", { username, password });
-
-    if (data.status !== "ok") {
-      console.log("Error!");
-      return;
+    try {
+      const data = await loginUser({ username, password });
+      console.log(data);
+      if (data.status !== "ok") {
+        console.log("No User Found!");
+        return;
+      }
+      dispatch(login(data.user));
+      navigate("/dashboard");
+    } catch (error) {
+      console.log("Error in the api");
     }
-
-    dispatch(login(data.user));
-    navigate("/dashboard");
   };
 
   return (
