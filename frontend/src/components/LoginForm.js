@@ -17,20 +17,15 @@ const LoginForm = () => {
   const loginFormHandler = async (e) => {
     e.preventDefault();
 
-    try {
-      const { data } = await axios.post("/users/login", { username, password });
-      console.log(data);
-      dispatch(login(data));
-      navigate("/dashboard");
-    } catch (error) {
-      console.log("error:", error);
-      navigate("/");
+    const { data } = await axios.post("/users/login", { username, password });
+
+    if (data.status !== "ok") {
+      console.log("Error!");
+      return;
     }
 
-    // if (data.status === "error") {
-    //   console.log("error:", data);
-    //   navigate("/");
-    // }
+    dispatch(login(data.user));
+    navigate("/dashboard");
   };
 
   return (
