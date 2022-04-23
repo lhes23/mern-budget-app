@@ -18,7 +18,7 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <div className="wrapper">
       <MainNavbar />
       <h1>Welcome {user && user.username}</h1>
       <Routes>
@@ -29,7 +29,7 @@ const Dashboard = () => {
       <Button variant="primary" onClick={logoutHandler}>
         Logout
       </Button>
-    </>
+    </div>
   );
 };
 

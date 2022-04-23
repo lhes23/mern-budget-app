@@ -6,15 +6,11 @@ import Register from "./pages/Register";
 
 const App = () => {
   return (
-    <div className="wrapper">
-      <Container fluid="md" className="mt-5">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
-        </Routes>
-      </Container>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard/*" element={<Dashboard />} />
+    </Routes>
   );
 };
 
