@@ -5,6 +5,7 @@ import { logout, selectUser } from "../features/UserSlice";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AllUsers from "../components/AllUsers";
 import UserDetailsPage from "./UserDetailsPage";
+import MainNavbar from "../components/MainNavbar";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <>
+      <MainNavbar />
       <h1>Welcome {user && user.username}</h1>
-      <h2>Dashboard</h2>
       <Routes>
         <Route path="/" element={<AllUsers />} />
         <Route path="/users/:id" element={<UserDetailsPage />} />
@@ -28,7 +29,7 @@ const Dashboard = () => {
       <Button variant="primary" onClick={logoutHandler}>
         Logout
       </Button>
-    </div>
+    </>
   );
 };
 
