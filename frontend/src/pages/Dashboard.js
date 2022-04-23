@@ -5,11 +5,12 @@ import { logout, selectUser } from "../features/UserSlice";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import AllUsers from "../components/AllUsers";
 import UserDetailsPage from "./UserDetailsPage";
-import MainNavbar from "../components/MainNavbar";
+import MainNavbar from "../components/dashboardComponents/MainNavbar";
+import MainContent from "../components/dashboardComponents/MainContent";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+
   const navigate = useNavigate();
 
   const logoutHandler = () => {
@@ -20,11 +21,12 @@ const Dashboard = () => {
   return (
     <div className="wrapper">
       <MainNavbar />
-      <h1>Welcome {user && user.username}</h1>
-      <Routes>
-        <Route path="/" element={<AllUsers />} />
-        <Route path="/users/:id" element={<UserDetailsPage />} />
-      </Routes>
+      <div className="content-wrapper">
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/users/:id" element={<UserDetailsPage />} />
+        </Routes>
+      </div>
 
       <Button variant="primary" onClick={logoutHandler}>
         Logout

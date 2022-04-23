@@ -1,7 +1,12 @@
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/UserSlice";
 
 const MainNavbar = () => {
+  // const user = useSelector(selectUser);
+  const user = { username: "Lester" };
+  // console.log(user);
+
   return (
     <div>
       {/* Navbar */}
@@ -220,7 +225,7 @@ const MainNavbar = () => {
             </div>
             <div className="info">
               <a href="#" className="d-block">
-                Alexander Pierce
+                {user.username}
               </a>
             </div>
           </div>
