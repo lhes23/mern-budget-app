@@ -8,8 +8,8 @@ const InfoBoxSingle = ({ name, value, spanClassName, iconClassName }) => {
         <div className="info-box-content">
           <span className="info-box-text">{name}</span>
           <span className="info-box-number">
+            <small>&#8369; </small>
             {value}
-            <small>%</small>
           </span>
         </div>
         {/* /.info-box-content */}

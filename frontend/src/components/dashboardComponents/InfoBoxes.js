@@ -6,19 +6,19 @@ const InfoBoxes = () => {
       {/* Info boxes */}
       <div className="row">
         <InfoBoxSingle
-          name="CPU Traffic"
+          name="Incomes"
           value={10}
           spanClassName="bg-info"
           iconClassName="fas fa-cog"
         />
         <InfoBoxSingle
-          name="Likes"
+          name="Expenses"
           value={10}
           spanClassName="bg-danger"
           iconClassName="fas fa-thumbs-up"
         />
         <InfoBoxSingle
-          name="Sales"
+          name="Cashflow"
           value={10}
           spanClassName="bg-success"
           iconClassName="fas fa-shopping-cart"
