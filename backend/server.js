@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/balance-sheet", require("./routes/balanceSheetRoutes"));
 
 const port = process.env.PORT || 3001;
 

@@ -5,7 +5,7 @@ import { login } from "../features/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import FormInputSingle from "./FormInputSingle";
 import FormButton from "./FormButton";
-import { loginUser } from "../api";
+import { loginUser } from "../api/Users";
 import AlertError from "./AlertError";
 
 const LoginForm = () => {
