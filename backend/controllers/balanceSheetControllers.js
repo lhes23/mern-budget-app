@@ -5,4 +5,14 @@ const AllBalanceSheet = async (req, res) => {
   res.json(Balance);
 };
 
-module.exports = { AllBalanceSheet };
+const AddIncomeExpense = async (req, res) => {
+  const { item, amount, type } = req.body;
+  try {
+    await BalanceSheets.create({ item, amount, type });
+    res.json({ status: "ok" });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { AllBalanceSheet, AddIncomeExpense };

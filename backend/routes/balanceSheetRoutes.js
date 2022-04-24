@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { AllBalanceSheet } = require("../controllers/balanceSheetControllers");
+const {
+  AllBalanceSheet,
+  AddIncomeExpense,
+} = require("../controllers/balanceSheetControllers");
 
-router.route("/").get(AllBalanceSheet);
+router.route("/").get(AllBalanceSheet).post(AddIncomeExpense);
 
 module.exports = router;
