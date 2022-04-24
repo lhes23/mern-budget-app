@@ -5,6 +5,28 @@ const AllBalanceSheet = async (req, res) => {
   res.json(Balance);
 };
 
+const SumIncomeExpense = async (req, res) => {
+  BalanceSheets.aggregate(
+    [
+      {
+        $group: {
+          _id: "$type",
+          total: {
+            $sum: "$amount",
+          },
+        },
+      },
+    ],
+    (err, result) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(result);
+      }
+    }
+  );
+};
+
 const AddIncomeExpense = async (req, res) => {
   const { item, amount, type } = req.body;
   try {
@@ -15,4 +37,4 @@ const AddIncomeExpense = async (req, res) => {
   }
 };
 
-module.exports = { AllBalanceSheet, AddIncomeExpense };
+module.exports = { AllBalanceSheet, AddIncomeExpense, SumIncomeExpense };

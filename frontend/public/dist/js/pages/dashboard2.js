@@ -1,7 +1,7 @@
 /* global Chart:false */
 
 $(function () {
-  "use strict";
+  // "use strict";
 
   /* ChartJS
    * -------
