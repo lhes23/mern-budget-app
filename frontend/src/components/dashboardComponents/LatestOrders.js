@@ -10,7 +10,7 @@ const LatestOrders = () => {
         const data = await getAllBalanceSheet();
         setBalance(data);
       } catch (error) {
-        console.log(error);
+        console.log("Error mo", error);
       }
     };
     fetchData();
