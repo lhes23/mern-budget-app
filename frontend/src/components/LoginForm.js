@@ -21,9 +21,8 @@ const LoginForm = () => {
 
     try {
       const data = await loginUser({ username, password });
-      console.log(data);
       if (data.status !== "ok") {
-        setError("No User Found!");
+        setError(data.errorMsg);
         return;
       }
       dispatch(login(data.user));

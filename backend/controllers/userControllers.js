@@ -6,7 +6,6 @@ const createUser = async (req, res) => {
 
   try {
     const newPassword = await bcrypt.hash(password, 10);
-
     await User.create({ email, username, password: newPassword });
     res.json({ status: "ok" });
   } catch (error) {
@@ -16,14 +15,23 @@ const createUser = async (req, res) => {
 
 const findUser = async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({ username, password });
+  const user = await User.findOne({ username });
 
-  if (user) {
-    return res.json({ status: "ok", user });
-  } else {
-    res.json({ status: "error", user: null });
+  if (!user) {
+    res.json({ status: "error", user: null, errorMsg: "No User Found!" });
     throw new Error("No User Found");
   }
+
+  const pwdMatch = await bcrypt.compare(password, user.password);
+
+  console.log(pwdMatch);
+
+  if (!pwdMatch) {
+    res.json({ status: "error", user: null, errorMsg: "Wrong Password!" });
+    throw new Error("Wrong Password");
+  }
+
+  res.json({ status: "ok", user });
 };
 
 const getAllUsers = async (req, res) => {
