@@ -1,6 +1,5 @@
 import MainSideBar from "./MainSideBar";
 import MessagesDashboard from "./MessagesDashboard";
-import dummyMessages from "../../api/dummyMessages.json";
 
 const MainNavbar = () => {
   return (
@@ -23,19 +22,8 @@ const MainNavbar = () => {
         {/* Right navbar links */}
         <ul className="navbar-nav ml-auto">
           {/* Messages Dropdown Menu */}
-          <li className="nav-item dropdown">
-            <a className="nav-link" data-toggle="dropdown" href="/#">
-              <i className="far fa-comments" />
-              <span className="badge badge-danger navbar-badge">3</span>
-            </a>
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <MessagesDashboard />
+          <MessagesDashboard />
 
-              <a href="/#" className="dropdown-item dropdown-footer">
-                See All Messages
-              </a>
-            </div>
-          </li>
           {/* Notifications Dropdown Menu */}
           <li className="nav-item dropdown">
             <a className="nav-link" data-toggle="dropdown" href="/#">
