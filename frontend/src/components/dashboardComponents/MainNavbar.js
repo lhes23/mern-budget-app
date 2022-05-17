@@ -29,9 +29,7 @@ const MainNavbar = () => {
               <span className="badge badge-danger navbar-badge">3</span>
             </a>
             <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              {dummyMessages.map((msg) => {
-                return <MessagesDashboard msg={msg} />;
-              })}
+              <MessagesDashboard />
 
               <a href="/#" className="dropdown-item dropdown-footer">
                 See All Messages
