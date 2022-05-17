@@ -1,0 +1,20 @@
+[
+  {
+    "userImage": "dist/img/user1-128x128.jpg",
+    "senderName": "Brad Diesel",
+    "message": "Call me whenever you can...",
+    "timeSent": "4 Hours Ago"
+  },
+  {
+    "userImage": "dist/img/user8-128x128.jpg",
+    "senderName": "John Pierce",
+    "message": "I got your message bro",
+    "timeSent": "4 Hours Ago"
+  },
+  {
+    "userImage": "dist/img/user3-128x128.jpg",
+    "senderName": "Nora Silvester",
+    "message": "The subject goes here",
+    "timeSent": "4 Hours Ago"
+  }
+]

@@ -1,26 +1,6 @@
 import MainSideBar from "./MainSideBar";
 import MessagesDashboard from "./MessagesDashboard";
-
-const DUMMY_MESSAGES = [
-  {
-    userImage: "dist/img/user1-128x128.jpg",
-    senderName: "Brad Diesel",
-    message: "Call me whenever you can...",
-    timeSent: "4 Hours Ago",
-  },
-  {
-    userImage: "dist/img/user8-128x128.jpg",
-    senderName: "John Pierce",
-    message: "I got your message bro",
-    timeSent: "4 Hours Ago",
-  },
-  {
-    userImage: "dist/img/user3-128x128.jpg",
-    senderName: "Nora Silvester",
-    message: "The subject goes here",
-    timeSent: "4 Hours Ago",
-  },
-];
+import dummyMessages from "../../api/dummyMessages.json";
 
 const MainNavbar = () => {
   return (
@@ -49,7 +29,7 @@ const MainNavbar = () => {
               <span className="badge badge-danger navbar-badge">3</span>
             </a>
             <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              {DUMMY_MESSAGES.map((msg) => {
+              {dummyMessages.map((msg) => {
                 return <MessagesDashboard msg={msg} />;
               })}
 
